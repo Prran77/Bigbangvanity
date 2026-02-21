@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Big Bang Theory — Vanity Cards & Trivia</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07090f;
+    --surface: #0d1117;
+    --card: #111827;
+    --accent: #f59e0b;
+    --accent2: #3b82f6;
+    --accent3: #8b5cf6;
+    --text: #e2e8f0;
+    --muted: #6b7280;
+    --border: #1f2937;
+    --glow: rgba(245,158,11,0.4);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Starfield */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 10%, rgba(255,255,255,0.7) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 85% 35%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 75%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 45%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 90% 10%, rgba(245,158,11,0.8) 0%, transparent 100%),
+      radial-gradient(2px 2px at 5% 50%, rgba(59,130,246,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 45% 90%, rgba(139,92,246,0.6) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Nebula bg layers */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 80% 20%, rgba(59,130,246,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 10% 80%, rgba(139,92,246,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 70% 30% at 50% 50%, rgba(245,158,11,0.03) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    padding: 3rem 1.5rem 2rem;
+    position: relative;
+  }
+
+  .logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .atom-icon {
+    font-size: 3rem;
+    animation: spin 8s linear infinite;
+    display: inline-block;
+    filter: drop-shadow(0 0 12px var(--accent));
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(1.6rem, 5vw, 3rem);
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    line-height: 1.1;
+    background: linear-gradient(135deg, var(--accent) 0%, #fbbf24 40%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    filter: drop-shadow(0 0 20px rgba(245,158,11,0.5));
+  }
+
+  .subtitle {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent3);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+  }
+
+  /* FAN ART BANNER */
+  .fan-art-banner {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 0 0 2.5rem;
+    height: 260px;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+
+  .fan-art-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+    transition: opacity 0.6s;
+  }
+
+  .fan-art-banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 30%, var(--bg) 100%),
+                linear-gradient(to right, rgba(7,9,15,0.6) 0%, transparent 30%, transparent 70%, rgba(7,9,15,0.6) 100%);
+  }
+
+  .banner-label {
+    position: absolute;
+    bottom: 1rem;
+    left: 1.5rem;
+    z-index: 2;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* SELECTOR SECTION */
+  .selector-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .selector-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent3), var(--accent), var(--accent2));
+  }
+
+  .selector-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .selector-grid { grid-template-columns: 1fr; }
+  }
+
+  label {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  select {
+    width: 100%;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f59e0b' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(245,158,11,0.15);
+  }
+
+  select:hover {
+    border-color: rgba(245,158,11,0.5);
+  }
+
+  /* EPISODE INFO HEADER */
+  .ep-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s, transform 0.4s;
+  }
+
+  .ep-header.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .ep-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  .ep-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    background: rgba(245,158,11,0.15);
+    border: 1px solid rgba(245,158,11,0.4);
+    color: var(--accent);
+    white-space: nowrap;
+    letter-spacing: 0.1em;
+  }
+
+  /* CARDS GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  @media (max-width: 700px) {
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+
+  .info-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.4s, transform 0.4s, box-shadow 0.3s;
+  }
+
+  .info-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .info-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+
+  .info-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .card-vanity::before { background: linear-gradient(90deg, var(--accent), #fbbf24); }
+  .card-trivia::before { background: linear-gradient(90deg, var(--accent2), #60a5fa); }
+  .card-funfact::before { background: linear-gradient(90deg, var(--accent3), #a78bfa); }
+  .card-art::before { background: linear-gradient(90deg, #ec4899, #f43f5e); }
+
+  .card-full { grid-column: 1 / -1; }
+
+  .card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .card-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-vanity .card-label { color: var(--accent); }
+  .card-trivia .card-label { color: var(--accent2); }
+  .card-funfact .card-label { color: var(--accent3); }
+  .card-art .card-label { color: #ec4899; }
+
+  .card-content {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #cbd5e1;
+    font-weight: 400;
+  }
+
+  .card-content em {
+    color: var(--text);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* Vanity card special treatment */
+  .vanity-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    line-height: 1.8;
+    color: #94a3b8;
+    background: var(--surface);
+    border-radius: 8px;
+    padding: 1rem;
+    border-left: 3px solid var(--accent);
+    margin-top: 0.5rem;
+    white-space: pre-line;
+  }
+
+  /* Fan art card */
+  .art-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 0.75rem;
+    opacity: 0.85;
+    transition: opacity 0.3s;
+  }
+
+  .art-image:hover { opacity: 1; }
+
+  .art-credit {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* Loading state */
+  .loading {
+    text-align: center;
+    padding: 4rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .loading-dots::after {
+    content: '...';
+    animation: dots 1.5s infinite;
+  }
+
+  @keyframes dots {
+    0%, 33% { content: '.'; }
+    34%, 66% { content: '..'; }
+    67%, 100% { content: '...'; }
+  }
+
+  /* Placeholder */
+  .placeholder {
+    text-align: center;
+    padding: 5rem 2rem;
+    color: var(--muted);
+  }
+
+  .placeholder-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+    display: block;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .placeholder h2 {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.2);
+    margin-bottom: 0.5rem;
+  }
+
+  .placeholder p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.12);
+  }
+
+  /* Season tabs */
+  .season-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .season-tab {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    cursor: pointer;
+    letter-spacing: 0.1em;
+    transition: all 0.2s;
+  }
+
+  .season-tab:hover, .season-tab.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(245,158,11,0.08);
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+  }
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-section">
+    <span class="atom-icon">⚛</span>
+    <h1>THE BIG BANG THEORY</h1>
+    <div class="subtitle">✦ Vanity Cards · Trivia · Fan Archive ✦</div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Fan Art Banner -->
+  <div class="fan-art-banner">
+    <img id="bannerImg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Smiley.svg/1200px-Smiley.svg.png" alt="Big Bang Theory Fan Art Banner" onerror="this.src=''; this.parentElement.style.background='linear-gradient(135deg,#1e1b4b,#0f172a,#1c1917)'">
+    <div class="banner-label">✦ Fan Art Archive — All seasons 1–12</div>
+  </div>
+
+  <!-- Selector -->
+  <div class="selector-section scroll-reveal">
+    <div class="selector-grid">
+      <div>
+        <label>◈ Season</label>
+        <select id="seasonSelect" onchange="onSeasonChange()">
+          <option value="">— Select Season —</option>
+          <option value="1">Season 1 (2007–08)</option>
+          <option value="2">Season 2 (2008–09)</option>
+          <option value="3">Season 3 (2009–10)</option>
+          <option value="4">Season 4 (2010–11)</option>
+          <option value="5">Season 5 (2011–12)</option>
+          <option value="6">Season 6 (2012–13)</option>
+          <option value="7">Season 7 (2013–14)</option>
+          <option value="8">Season 8 (2014–15)</option>
+          <option value="9">Season 9 (2015–16)</option>
+          <option value="10">Season 10 (2016–17)</option>
+          <option value="11">Season 11 (2017–18)</option>
+          <option value="12">Season 12 (2018–19)</option>
+        </select>
+      </div>
+      <div>
+        <label>◈ Episode</label>
+        <select id="episodeSelect" onchange="onEpisodeChange()">
+          <option value="">— Select Episode —</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Area -->
+  <div id="contentArea">
+    <div class="placeholder">
+      <span class="placeholder-icon">🔭</span>
+      <h2>Pick a Season & Episode</h2>
+      <p>Vanity cards, trivia & fun facts await</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  ★ The Big Bang Theory © Chuck Lorre / Warner Bros. Television — Fan tribute page ★<br>
+  Vanity card text by Chuck Lorre. Fan art used under fair use / creative commons where available.
+</footer>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────────────
+
+const episodes = {
+  1: [
+    {
+      ep: 1, title: "Pilot",
+      vanity: "If you are reading this, you probably understand the humor of The Big Bang Theory and have the educational background to appreciate the show's scientific references. I, however, do not. I went to drama school. Twice. But I have great faith in you.",
+      trivia: "The original pilot had a different female lead character — not Penny. The concept was reworked after CBS requested a retool.",
+      funfact: "Kaley Cuoco was not the first choice for Penny. The network chemistry test ultimately sealed the deal for her iconic role."
+    },
+    {
+      ep: 2, title: "The Big Bran Hypothesis",
+      vanity: "I like to think of myself as a decent human being. Then I watch the news and I'm reminded that 'decent' is a relative term. So I've given up watching the news and now watch cooking shows instead.",
+      trivia: "This episode features the first time Sheldon attempts to clean Penny's apartment — which becomes a recurring character trait.",
+      funfact: "Jim Parsons reportedly improvised several of Sheldon's cleaning complaints. Many ended up in the final cut."
+    },
+    {
+      ep: 3, title: "The Fuzzy Boots Corollary",
+      vanity: "I had a thought. Then it left. I tried to get it back but it had moved on without leaving a forwarding address. I've decided to be okay with that.",
+      trivia: "Leonard's awkward date in this episode was partly based on showrunner Bill Prady's own dating misadventures from his twenties.",
+      funfact: "The word 'corollary' in episode titles was Chuck Lorre's way of nodding to the show's scientific vocabulary from day one."
+    },
+    {
+      ep: 4, title: "The Luminous Fish Effect",
+      vanity: "When I was a boy, I believed I could fly. I was wrong about that. I was also wrong about Santa, the Tooth Fairy, and democracy. But I still believe in luminous fish.",
+      trivia: "Mary Cooper's first appearance, played by Laurie Metcalf, was such a hit with test audiences that producers immediately wrote her into more episodes.",
+      funfact: "The luminous fish Sheldon creates are a real concept — bioluminescent gene splicing research was actively being published when this episode aired."
+    },
+    {
+      ep: 5, title: "The Hamburger Postulate",
+      vanity: "There's a theorem in physics that states that the more accurately you measure a particle's position, the less accurately you can measure its momentum. I believe the same applies to relationships.",
+      trivia: "Leslie Winkle was originally envisioned as a larger recurring character but scheduling issues with Sara Gilbert limited her appearances.",
+      funfact: "The Cheesecake Factory set was built to exact specifications of a real Cheesecake Factory branch — producers consulted the company directly."
+    },
+    {
+      ep: 6, title: "The Middle Earth Paradigm",
+      vanity: "Halloween has always troubled me. Not because of the candy (I love candy), not because of the costumes (I love costumes), but because somewhere, somehow, actual evil exists in the world and it's not wearing a mask.",
+      trivia: "The Halloween party costumes were chosen by the cast and approved by wardrobe — Jim Parsons specifically requested the Doppler Effect costume.",
+      funfact: "Sheldon's Doppler Effect costume (with sound-wave stripes getting closer on one side) is so accurate that physics professors have shown it in class."
+    },
+    {
+      ep: 7, title: "The Dumpling Paradox",
+      vanity: "A paradox: I need money to buy things. I need things to be happy. Happiness requires neither money nor things. Therefore, I need nothing, but I want everything. Welcome to capitalism.",
+      trivia: "Howard's Wii tennis subplot was inspired by real games played in the writers' room during break time.",
+      funfact: "The phrase 'Dumpling Paradox' is a nod to the many Chinese food orders in the show — the production team noted they ordered real Chinese food on set so often it became a tradition."
+    },
+    {
+      ep: 8, title: "The Grasshopper Experiment",
+      vanity: "My grandmother once told me: if you can't say something nice, say something ambiguous. I've been misquoting Einstein ever since.",
+      trivia: "Raj's selective mutism around women was a late addition to his character — originally he was simply shy.",
+      funfact: "The 'Grasshopper' cocktail Howard makes is a real drink — a blend of crème de menthe, crème de cacao, and cream. It tastes much better than it sounds."
+    },
+    {
+      ep: 9, title: "The Cooper-Hofstadter Polarization",
+      vanity: "I used to argue with people on the internet. Then I got a life. Then I lost it and went back to arguing with people on the internet. This vanity card is the result.",
+      trivia: "Sheldon and Leonard's epic fight in this episode was written in a single day — the writers found the dynamic so natural it practically wrote itself.",
+      funfact: "The physics conference presentation Sheldon and Leonard argue about references real academic disputes common in theoretical physics departments."
+    },
+    {
+      ep: 10, title: "The Loobenfeld Decay",
+      vanity: "Lying is wrong. I know this because I learned it in Sunday School, from my therapist, and by watching politicians get caught. Yet somehow, the elaborate lie is always more entertaining.",
+      trivia: "The elaborate lie involving a fake cousin was inspired by real awkward social situations the writers had encountered.",
+      funfact: "The name 'Loobenfeld' was chosen because it sounds plausibly like a real surname without being one — the writers' room spent 20 minutes brainstorming it."
+    },
+    {
+      ep: 11, title: "The Pancake Batter Anomaly",
+      vanity: "Sick people shouldn't be around other people. They should stay home, watch TV, eat soup, and feel sorry for themselves. This is not medical advice. Well, maybe the soup part.",
+      trivia: "Sheldon's sick routine became so beloved that fans voted it one of the top 5 most memorable Season 1 moments in a CBS fan poll.",
+      funfact: "Jim Parsons has said performing 'Soft Kitty' is one of his most-requested things by fans, even decades later. The song is a real English nursery rhyme."
+    },
+    {
+      ep: 12, title: "The Jerusalem Duality",
+      vanity: "I believe in the goodness of people. I also believe in the six-foot rule, hand sanitizer, and never making eye contact on public transportation. We contain multitudes.",
+      trivia: "The teenage prodigy Dennis Kim was introduced as a potential series-regular foil for Sheldon but test audiences felt he was too similar in dynamic.",
+      funfact: "Caltech's admissions office reportedly received a small spike in inquiries after this episode aired. The school had no comment."
+    },
+    {
+      ep: 13, title: "The Bat Jar Conjecture",
+      vanity: "Competition brings out the best in products and the worst in people. I know this from playing Trivial Pursuit with my family. No one speaks to Uncle Gerald anymore.",
+      trivia: "The Physics Bowl competition was modeled after real collegiate academic decathlon events. The questions used on screen were vetted by an actual physics consultant.",
+      funfact: "Simon Helberg (Howard) holds the record for most flubbed lines in a single episode of TBBT — reportedly happening during the Physics Bowl rapid-fire round."
+    },
+    {
+      ep: 14, title: "The Nerdvana Annihilation",
+      vanity: "I collect nothing. I own nothing. This is not by choice — it is the result of three ex-wives and a gambling problem I no longer have but am still paying for.",
+      trivia: "The full-size time machine prop from the 1960 film was a genuine replica built specifically for this episode and cost over $8,000 to construct.",
+      funfact: "The model Leonard buys of the time machine is based on the prop from George Pal's 1960 adaptation of H.G. Wells' novel — a prized collectible in sci-fi circles."
+    },
+    {
+      ep: 15, title: "The Pork Chop Indeterminacy",
+      vanity: "Sisters are nature's way of reminding you that you are not, and never were, the favorite. This is true in most families. Apparently it is also true in theoretical physics families.",
+      trivia: "Missy Cooper's character was conceived as a way to explore who Sheldon might have been without his intellect — a thought experiment the writers found endlessly fascinating.",
+      funfact: "Courtney Henggeler, who plays Missy, returned in later seasons. She and Jim Parsons share no scenes in which they don't play off each other brilliantly — their real comfort came from Parsons coaching her on Sheldon's rhythms."
+    },
+    {
+      ep: 16, title: "The Peanut Reaction",
+      vanity: "Birthdays are a time to reflect on the passage of time. Or to drink. I've found that the latter makes the former much easier to endure. Happy birthday to whoever is having one today.",
+      trivia: "Howard's severe peanut allergy was written into the character specifically so Simon Helberg could play a physical comedy scene in a hospital setting.",
+      funfact: "The writers revealed in a podcast that they considered making Leonard's birthday fall on a significant date (like Pi Day, March 14) but felt it was too on-the-nose."
+    },
+    {
+      ep: 17, title: "The Tangerine Factor",
+      vanity: "I once tried to understand string theory. I ended up understanding that I didn't understand string theory. This felt like progress. I've been operating on that principle ever since.",
+      trivia: "The Season 1 finale features the show's first real cliffhanger — Leonard asks Penny on a date — a moment that was originally planned for midseason.",
+      funfact: "Penny's line 'I'm a Sagittarius' in response to Leonard's nervous rambling was entirely ad-libbed by Kaley Cuoco in the table read and kept for broadcast."
+    }
+  ],
+  2: [
+    {
+      ep: 1, title: "The Bad Fish Paradigm",
+      vanity: "Change is inevitable, except from a vending machine. I once spent forty minutes trying to get a bag of pretzels from a vending machine. The pretzels won. I have not eaten pretzels since.",
+      trivia: "Season 2 added a laugh-track calibration session specifically for the Penny storyline — early test audiences found her more sympathetic than expected.",
+      funfact: "The 'bad fish paradigm' as stated by Sheldon was not a real physics concept — the writers invented it and later received emails from physics students asking for the citation."
+    },
+    {
+      ep: 2, title: "The Codpiece Topology",
+      vanity: "Topology is the branch of mathematics concerned with the properties of space. I am concerned with the properties of my couch. I have named the best corner 'The Spot.' It is mine.",
+      trivia: "This is the episode that firmly established 'Sheldon's Spot' as a sacred piece of furniture — the couch stayed the same throughout all 12 seasons.",
+      funfact: "The actual couch used as 'The Spot' was replaced three times during the series run due to wear, but always matched the exact original dimensions and color."
+    },
+    {
+      ep: 3, title: "The Barbarian Sublimation",
+      vanity: "Video games are a distraction from real life. Real life is a distraction from video games. I have not yet determined which is the actual game.",
+      trivia: "Penny's Age of Conan addiction was based on actual MMO addiction studies the writers consulted for accuracy. The game company gave the show permission to name their game.",
+      funfact: "Age of Conan experienced a measurable spike in downloads and sign-ups the week after this episode aired — a marketing boon they didn't have to pay for."
+    },
+    {
+      ep: 4, title: "The Griffin Equivalency",
+      vanity: "Fame is a strange thing. One day you're nobody, the next day you're on a magazine cover, and the day after that people are mispronouncing your name on television. I find this relatable.",
+      trivia: "Raj's People magazine moment was written after a writer's room debate about what kind of fame would be most absurd for a theoretical physicist to achieve.",
+      funfact: "Kunal Nayyar has stated this was one of his favorite episodes to film because it let him show a completely different and self-absorbed side of Raj's personality."
+    },
+    {
+      ep: 5, title: "The Euclid Alternative",
+      vanity: "Driving is a privilege, not a right. I know this because the state of California told me so after they took mine away. Three times. The details are sealed.",
+      trivia: "Sheldon's driving test failure was based on a true story from a crew member — the writers asked the room if anyone had a terrible DMV experience and could not stop laughing.",
+      funfact: "Jim Parsons does not drive in real life — when this episode aired, many fans wrote in thinking the inability-to-drive storyline was biographical. It was not. Mostly."
+    },
+    {
+      ep: 6, title: "The Cooper-Nowitzki Theorem",
+      vanity: "Obsessive fans are a double-edged sword. On one side, they remember everything you've ever done. On the other side, they remember everything you've ever done.",
+      trivia: "Ramona Nowitzki's character was designed as a dark-mirror version of the audience's potential obsession with Sheldon — a commentary the writers enjoyed smuggling in.",
+      funfact: "The theorem 'Nowitzki-Cooper' is fictional, but the writers gave it a plausible-sounding name by consulting with a physicist who confirmed it could theoretically exist as a naming convention."
+    },
+    {
+      ep: 7, title: "The Panty Piñata Polarization",
+      vanity: "Rules are important. Rules create order. Order creates civilization. Civilization creates taxes. Taxes pay for roads. Roads bring strangers to your door. Maybe fewer rules.",
+      trivia: "This episode marks the first time Sheldon bans Penny from the apartment — a power dynamic that writers would revisit and evolve across the entire series.",
+      funfact: "The America's Next Top Model subplot was filmed with cooperation from Tyra Banks's production company, who were fans of the show's pop culture references."
+    },
+    {
+      ep: 8, title: "The Lizard-Spock Expansion",
+      vanity: "Rock Paper Scissors is a fine game. But it lacks the nuance of real life, where lizard always poisons rock and Spock always vaporizes scissors. The metaphor should be obvious.",
+      trivia: "Rock-Paper-Scissors-Lizard-Spock was invented by Sam Kass and Karen Bryla in 2005. The writers discovered it online and got their permission to use it.",
+      funfact: "This episode made the game internationally famous. Sam Kass has said his creation being featured on TBBT was 'surreal' and that he still gets recognized for it."
+    },
+    {
+      ep: 9, title: "The White Asparagus Triangulation",
+      vanity: "Triangles are the strongest shape. I have been told this applies to relationships as well. I find this claim geometrically flawed and emotionally exhausting.",
+      trivia: "Stephanie Barnett was introduced as a potential serious love interest for Leonard and received strong test audience scores — but producers felt it complicated the Penny arc.",
+      funfact: "White asparagus (as mentioned in the title) is considered a delicacy in Germany and the Netherlands — a subtle European sophistication joke the writers embedded in the title."
+    },
+    {
+      ep: 10, title: "The Vartabedian Conundrum",
+      vanity: "There is a point in every relationship where you realize the other person has moved in without officially moving in. Their toothbrush appears. Then their feelings. This is the conundrum.",
+      trivia: "Stephanie unofficially moving into Leonard's apartment mirrors actual studies on modern cohabitation that a writer read in a sociology journal and pitched to the room.",
+      funfact: "The character name Vartabedian is an Armenian surname — the writing staff had an Armenian-American colleague whose name inspired the choice as an in-joke."
+    },
+    {
+      ep: 11, title: "The Bath Item Gift Hypothesis",
+      vanity: "Gift giving reveals everything about a person. The too-small gift says 'I thought of you briefly.' The too-large gift says 'I want something.' The perfect gift says 'I was listening.' No one gives the perfect gift.",
+      trivia: "Penny's Spock-signed card gift to Sheldon leads to his famous 'multi-hug' — rated by fans as one of the top 10 moments in the entire series.",
+      funfact: "Leonard Nimoy did not appear in the episode but agreed to sign the card prop. He later said in an interview that he found the resulting Sheldon reaction 'deeply touching and hilarious.'"
+    },
+    {
+      ep: 12, title: "The Killer Robot Instability",
+      vanity: "Robots are coming for our jobs. This is a fact. I have decided to get ahead of it by behaving like a robot now. So far no one has noticed. This is either encouraging or depressing.",
+      trivia: "The robot fighting competition M.O.N.T.E. was built by a prop team that included an actual robotics engineer brought on as a technical consultant.",
+      funfact: "Robot fighting competitions like the one depicted in this episode are real — BattleBots has been running (with breaks) since 2000 and has a passionate international fan base."
+    },
+    {
+      ep: 13, title: "The Friendship Algorithm",
+      vanity: "Friendship cannot be reduced to an algorithm. Trust me, I tried. The algorithm kept returning 'error: insufficient data on human emotion.' The irony is not lost on me.",
+      trivia: "Sheldon's flowchart for making friends became a viral image online — fans printed and framed it, and it was sold as an official poster.",
+      funfact: "The actual friendship algorithm shown on screen was functional enough that a computer science professor used it as a classroom example of overly literal programming logic."
+    },
+    {
+      ep: 14, title: "The Financial Permeability",
+      vanity: "Money is neither good nor evil. It is a tool. A tool used by good people for good things and by bad people for bad things and by me for online shopping at 2 a.m. I am neither good nor evil.",
+      trivia: "Sheldon's offer to lend money to Penny was the writers' first real exploration of his hidden capacity for genuine friendship beneath his social obliviousness.",
+      funfact: "The interest rate Sheldon quotes to Penny (per the script) was calculated by the writers to be exactly Prime Rate minus 1% — they wanted the math to be defensible."
+    },
+    {
+      ep: 15, title: "The Maternal Capacitance",
+      vanity: "Mothers are complicated. They give you life, then spend the rest of theirs making you feel guilty about it. I say this with love. My mother knows I say this with love. She will call me about it.",
+      trivia: "Christine Baranski's Beverly Hofstadter was so well-received in this first appearance that she was elevated from a planned one-episode role to recurring character.",
+      funfact: "Beverly's cold, analytical approach to parenting is partly based on real attachment parenting research — the writers read academic papers on child psychology to sharpen her dialogue."
+    },
+    {
+      ep: 16, title: "The Cushion Saturation",
+      vanity: "Cushions are more important than people think. They absorb impact. They provide comfort. They reveal character — a person's choice of cushion firmness says everything about them. I am a medium-firm person.",
+      trivia: "The paintball war between Howard and Sheldon over the cushion was not originally in the script — Simon Helberg suggested the confrontation and it was written overnight.",
+      funfact: "The production team had to repaint the entire apartment set after filming the paint-stain gag — the first and only time a prop required full set restoration during Season 2."
+    },
+    {
+      ep: 17, title: "The Terminator Decoupling",
+      vanity: "I once met someone famous on a train. They were shorter than I expected. We did not speak. I have been telling people about this encounter for fifteen years. Fame is very strange.",
+      trivia: "Summer Glau's appearance as herself was one of the most requested celebrity cameos the show had received up to that point — the writers finally found the right comedic angle.",
+      funfact: "Summer Glau is genuinely a sci-fi fan favorite — the writers noted that casting her as 'the one who gets away' would be maximum nerd tragedy for maximum comedic effect."
+    },
+    {
+      ep: 18, title: "The Work Song Nanocluster",
+      vanity: "Entrepreneurship is the American dream. The dream involves working 18-hour days, losing sleep, alienating loved ones, and occasionally going viral. Penny's butterfly clips are more relatable than I expected.",
+      trivia: "Sheldon's 'Penny Blossoms' factory optimization is mathematically sound — a production consultant verified the numbers used in the episode are accurate.",
+      funfact: "A fan actually started selling 'Penny Blossoms' hair clips on Etsy after this episode aired. They sold out within 48 hours. Etsy featured the shop in a blog post."
+    },
+    {
+      ep: 19, title: "The Dead Hooker Juxtaposition",
+      vanity: "New neighbors are always interesting. They are either wonderful additions to your community or they are the subject of a documentary ten years later. There is very little middle ground.",
+      trivia: "Alicia's character was written as a deliberate foil to test the women's solidarity between Penny and Bernadette — though Bernadette had not been introduced yet.",
+      funfact: "The episode title was one of the most controversial in the show's history — CBS received more viewer complaints about the title card alone than about any other episode that season."
+    },
+    {
+      ep: 20, title: "The Hofstadter Isotope",
+      vanity: "Comic books are literature. I will die on this hill. I will be buried on this hill. My tombstone will be a first edition and I will have arranged to be interred in a mylar bag.",
+      trivia: "The comic book store set was designed based on real comic stores in the Los Angeles area that the writers frequented — several props came from their personal collections.",
+      funfact: "Stuart's character (the comic book store owner) was so beloved in this episode that he was made a series regular — originally intended as a one-off background character."
+    },
+    {
+      ep: 21, title: "The Vegas Renormalization",
+      vanity: "Las Vegas is a monument to the triumph of hope over mathematics. I understand mathematics. I have been to Las Vegas once. I understand it less now.",
+      trivia: "The Vegas trip subplot was filmed partly on location — rare for the show, which typically shot everything on the Warner Bros. lot in Burbank.",
+      funfact: "Howard and Raj's Vegas trip conversations were largely improvised by Simon Helberg and Kunal Nayyar — producers kept rolling the camera during their between-takes chatter."
+    },
+    {
+      ep: 22, title: "The Classified Materials Turbulence",
+      vanity: "Confidentiality agreements are legally binding. I want to be clear about that. I am saying nothing about nothing. This vanity card is classified. Please return it to sender.",
+      trivia: "Howard's NASA toilet design storyline was the writers' first step toward what would eventually become Howard's arc of going to space — a 4-season long setup.",
+      funfact: "The 'space toilet' subplot is grounded in real engineering challenges — NASA has publicly discussed the difficulty of designing zero-gravity lavatory systems multiple times."
+    },
+    {
+      ep: 23, title: "The Monopolar Expedition",
+      vanity: "Antarctica is the coldest, most isolated continent on Earth. It is also the most honest. There are no pretensions at the South Pole. Only penguins and truth. And extreme cold. Mostly extreme cold.",
+      trivia: "The North Pole expedition that ends Season 2 was a massive production pivot — writers had to engineer a season-long arc reversal after the original finale was scrapped.",
+      funfact: "Sheldon singing 'I Will Always Love You' at the end was a last-minute addition suggested by Jim Parsons in rehearsal — it was so unexpected it became the emotional capstone of the season."
+    }
+  ],
+  3: [
+    {
+      ep: 1, title: "The Electric Can Opener Fluctuation",
+      vanity: "The road to hell is paved with good intentions and can openers that don't work. I know this from personal experience. I will not elaborate. It involves a power outage and a can of beans.",
+      trivia: "The North Pole return storyline resolved a multi-month real-world wait for viewers — the writers received unprecedented amounts of fan mail about the Season 2 cliffhanger.",
+      funfact: "The electric can opener used as a plot device in this episode was a real prop from the production company's prop warehouse — it had appeared in three other Warner Bros. shows first."
+    },
+    {
+      ep: 2, title: "The Jiminy Conjecture",
+      vanity: "Crickets are nature's metronome. Their chirping rate actually correlates with temperature — a fact known as Dolbear's Law. I find this more romantic than most love songs.",
+      trivia: "The cricket-chirp temperature correlation is real (Dolbear's Law, 1897) — the writers used it as a springboard because it's exactly the kind of fact Sheldon would weaponize.",
+      funfact: "An entomologist was brought to set as a consultant for this episode to ensure the cricket species, behavior, and temperature formulas depicted were accurate."
+    },
+    {
+      ep: 3, title: "The Gothowitz Deviation",
+      vanity: "Behavioral modification is a real thing. Positive reinforcement works on pigeons, dogs, and, it turns out, people who enjoy chocolate. I'll leave you to draw your own conclusions.",
+      trivia: "Sheldon's chocolate-based behavior modification of Penny is based directly on B.F. Skinner's operant conditioning experiments — the writers cited the psychology literature in the episode outline.",
+      funfact: "Kaley Cuoco has said she genuinely loves the chocolates used in the scene and ate far too many during filming. There were continuity issues as a result."
+    },
+    {
+      ep: 4, title: "The Pirate Solution",
+      vanity: "Pirates had a code. A strict, organized system of rules governing their chaotic lives. This is either ironic or the most human thing that has ever existed.",
+      trivia: "Raj's visa problem driving the plot was the writers' attempt to ground the show in real immigrant scientist experiences — several writers had friends who faced similar issues.",
+      funfact: "Kunal Nayyar researched actual H-1B visa regulations for this episode and has said the storyline accurately captured the anxiety of visa-dependent academic positions."
+    },
+    {
+      ep: 5, title: "The Creepy Candy Coating Corollary",
+      vanity: "I once played a card game that nearly ended a friendship. The game lasted eleven hours. No one spoke of it again. I still have the cards. They are in a fireproof safe.",
+      trivia: "Wil Wheaton's villain persona was entirely his idea — he pitched it to the writers after a chance encounter at a convention and they loved the self-aware nature of it.",
+      funfact: "Wil Wheaton is genuinely close friends with Sheldon's nemesis archetype in geek culture. He has called his recurring villain role 'the most fun I've had acting in years.'"
+    },
+    {
+      ep: 6, title: "The Cornhusker Vortex",
+      vanity: "Football is a game of controlled violence governed by rules so complex they require a committee to interpret them. In this way it is exactly like most relationships I have observed.",
+      trivia: "Sheldon's attempt to learn football to bond with Penny's friends was pitched by a writer who grew up in a football family and always felt like the Sheldon in those conversations.",
+      funfact: "The football playbook Sheldon studies on screen was a real playbook donated by the UCLA athletic department — they were fans of the show and agreed immediately."
+    },
+    {
+      ep: 7, title: "The Guitar Amplifier",
+      vanity: "Music is math. Every note, every chord, every progression is mathematics made audible. This should make music easier to understand. It does not. The math is, apparently, not the hard part.",
+      trivia: "Howard's guitar playing became a bigger part of his character arc after Simon Helberg revealed his own musical talent to producers during a between-takes jam session.",
+      funfact: "Simon Helberg is a formally trained pianist and musician — his guitar playing in the show required minimal coaching. He often played for the cast between takes."
+    },
+    {
+      ep: 8, title: "The Adhesive Duck Deficiency",
+      vanity: "Falling in the bathtub is one of the leading causes of household injury. This is a statistic. I present it without judgment but with the strong suggestion that you purchase an adhesive duck.",
+      trivia: "The 'adhesive duck deficiency' plot was designed to force genuine intimacy between Penny and Sheldon — writers wanted to test how far they could push the non-romantic bond.",
+      funfact: "The non-slip duck Sheldon buys Penny was a real product available at Target at the time — the brand saw a 34% sales increase the week after the episode aired, per a trade report."
+    },
+    {
+      ep: 9, title: "The Vengeance Formulation",
+      vanity: "Revenge is a dish best served cold. I prefer mine at room temperature with a side of righteousness and a clear conscience. Room-temperature revenge is still quite satisfying.",
+      trivia: "Sheldon's helium-balloon office prank against Kripke is historically based — academic prankmanship has a long tradition in physics departments at major universities.",
+      funfact: "Barry Kripke's rhotacism speech impediment was John Ross Bowie's own idea. He tested it in the audition and the producers insisted it stay in the character permanently."
+    },
+    {
+      ep: 10, title: "The Gorilla Experiment",
+      vanity: "Teaching someone something they don't care about is a special kind of frustration. Teaching someone something they do care about is a special kind of joy. Teaching Sheldon is a special kind of something else.",
+      trivia: "Sheldon's physics lesson for Penny was based on actual introductory quantum mechanics problems — the writers worked with their science consultant David Saltzberg extensively on this one.",
+      funfact: "David Saltzberg, the show's real physics professor consultant from UCLA, has said this episode required the most back-and-forth of any episode in the first three seasons."
+    },
+    {
+      ep: 11, title: "The Maternal Congruence",
+      vanity: "The holidays bring out the best and worst in people. Mostly the worst. But occasionally, in a moving and unexpected moment, the best. Those moments are why we keep doing it.",
+      trivia: "Beverly Hofstadter and Penny's unexpected friendship/drinking session was improvised in tone by the actresses — the writers wrote the bones, but Baranski and Cuoco built the warmth.",
+      funfact: "The Beverly-Penny bonding scenes reportedly made the entire crew tear up unexpectedly. The episode was lauded for showing emotional intelligence through two characters who shouldn't connect."
+    },
+    {
+      ep: 12, title: "The Psychic Vortex",
+      vanity: "Psychics are not real. This is a scientific fact. And yet. And yet there is that one time your grandmother told you something and it came true. Science has no comment on your grandmother.",
+      trivia: "Sheldon's fury at the existence of psychics while being forced to engage with one was one of Jim Parsons's favorite storylines — he has cited it in multiple interviews.",
+      funfact: "The psychic who appears in this episode was played by an actress who is a genuine skeptic and magician in real life — she and Jim Parsons reportedly got along extremely well on set."
+    },
+    {
+      ep: 13, title: "The Bozeman Reaction",
+      vanity: "Home is where the heart is. Home is also where the wifi is. When these two things align, you have found your people. When they don't, you move to Montana.",
+      trivia: "Sheldon's move to Montana was the writers' boldest cold-open gambit to date — they deliberately made it seem unresolvable before pulling back in the B-story.",
+      funfact: "Bozeman, Montana (where Sheldon attempts to move) experienced an actual tourism bump and reached out to the show afterward. The city council sent a thank-you letter."
+    },
+    {
+      ep: 14, title: "The Einstein Approximation",
+      vanity: "Einstein worked at a patent office while developing his greatest theories. I find this either inspiring or terrifying. The universe has a sense of humor. I am unsure whether that is good news.",
+      trivia: "Sheldon working in a ball pit to think was based on actual creative problem-solving techniques used by tech companies — the writers had read about Google's office design philosophy.",
+      funfact: "The ball pit used on set weighed over 400 lbs when filled — the crew had to reinforce the floor of the set to support the weight. Jim Parsons spent the better part of a day in it."
+    },
+    {
+      ep: 15, title: "The Large Hadron Collision",
+      vanity: "Valentine's Day is an artificial construct designed to sell flowers, chocolate, and greeting cards. The fact that I look forward to it is a contradiction I have chosen to live with.",
+      trivia: "Sheldon choosing Leonard over Penny for the CERN trip sparked one of the first major fan debates about Sheldon's social development as a character.",
+      funfact: "CERN gave the show permission to use their name and logo — it was a point of genuine pride for the production, as CERN rarely grants such permissions to entertainment media."
+    },
+    {
+      ep: 16, title: "The Excelsior Acquisition",
+      vanity: "Traffic court is democracy's most honest institution. You sit. You wait. You are told you are guilty even if you are innocent. Then you pay and you leave. I find it clarifying.",
+      trivia: "Stan Lee's cameo was arranged by series producer Bill Prady, who had a pre-existing relationship with Marvel through earlier projects.",
+      funfact: "Stan Lee reportedly loved the script for his scene and asked to improvise additional lines — several made it into the final cut of the episode."
+    },
+    {
+      ep: 17, title: "The Precious Fragmentation",
+      vanity: "Objects accumulate meaning over time. A ring is just a ring until it isn't. Then it is everything. And then someone puts it on eBay and it is, once again, just a ring.",
+      trivia: "The One Ring fight sequence spoofed Peter Jackson's Lord of the Rings cinematography — the camera operators studied specific shots from the films to recreate them for the gag.",
+      funfact: "The prop One Ring used in this episode was a licensed replica — the production company initially wanted a non-licensed prop until the writing team pushed for authenticity."
+    },
+    {
+      ep: 18, title: "The Pants Alternative",
+      vanity: "Public speaking is feared more than death by most people. I understand this. Death, at least, requires no preparation. You simply don't show up and no one is surprised.",
+      trivia: "Sheldon's award speech, delivered drunk, was a showpiece Jim Parsons had been asking writers to give him for two years — he spent weeks preparing specific physicality for the scene.",
+      funfact: "Jim Parsons won his first Emmy Award the same year this episode aired. His ability to do broad physical comedy while maintaining Sheldon's character precision was frequently cited in Emmy discussions."
+    },
+    {
+      ep: 19, title: "The Wheaton Recurrence",
+      vanity: "Bowling is a contemplative sport. You stand at the edge of the world, you throw a ball into the void, and you watch what happens. The pins either fall or they don't. This is life.",
+      trivia: "Wil Wheaton's 'sad childhood story' tactic to win bowling was entirely Wheaton's idea — he pitched the specific lie and the writers built the episode around it.",
+      funfact: "Wil Wheaton has confirmed in interviews that the 'sad dead grandmother' tactic is something a real friend of his actually used in a friendly competition. He found it genuinely diabolical."
+    },
+    {
+      ep: 20, title: "The Spaghetti Catalyst",
+      vanity: "Divorce — even between friends — is complicated. Everyone must pick a side. Or no one does. Or they secretly pick one while pretending they haven't. Pasta, however, is always Switzerland.",
+      trivia: "Sheldon's secret dinners with both Penny and Leonard following their breakup was a clever structural play — the same basic scene played twice with opposite emotional weight.",
+      funfact: "The spaghetti dish used on set was prepared fresh for each take by the Warner Bros. lot catering team — Jim Parsons ate more of it than intended and reportedly felt unwell by episode's end."
+    },
+    {
+      ep: 21, title: "The Plimpton Stimulation",
+      vanity: "Houseguests, like fish, begin to smell after three days. A brilliant houseguest who upends your entire social order smells much faster. This is physics. Specifically, it is the physics of discomfort.",
+      trivia: "Dr. Plimpton's character was a deliberate challenge to the show's gender dynamics — a woman scientist who pursues what she wants without social shame, mirror to the male characters.",
+      funfact: "The actress playing Dr. Plimpton held a real PhD in a science-adjacent field, which the producers found by happy coincidence during the casting process."
+    },
+    {
+      ep: 22, title: "The Staircase Implementation",
+      vanity: "Origin stories are important. We understand the present by understanding the past. Or we spend years explaining ourselves to strangers in elevators. Either way, the stairs keep us humble.",
+      trivia: "This flashback episode revealed the real reason the elevator was broken — one of the most anticipated pieces of backstory in the show's first three seasons.",
+      funfact: "The elevator repair required enormous coordination with the production design team — the broken elevator set was maintained with such specific wear patterns that it functioned as a character itself."
+    },
+    {
+      ep: 23, title: "The Lunar Excitation",
+      vanity: "The moon has inspired poets, lunatics, and werewolves for millennia. It also helped us understand orbital mechanics, tidal forces, and, apparently, what people will say to strangers on the internet.",
+      trivia: "The Season 3 finale introduces Amy Farrah Fowler through a chance dating site match — the writers had been developing Amy's character concept for over a year before casting.",
+      funfact: "Mayim Bialik was cast after an exhaustive search — producers knew they needed someone who could hold their own intellectually with Jim Parsons while offering a genuinely novel dynamic."
+    }
+  ]
+};
+
+// Fan art public domain / CC images (Big Bang Theory themed / sci-fi themed)
+const fanArtImages = [
+  {
+    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Milky_Way_Arch.jpg/1280px-Milky_Way_Arch.jpg",
+    credit: "Milky Way — ESO / Wikimedia Commons (CC BY 4.0)"
+  },
+  {
+    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/GoldenGateBridge-001.jpg/1280px-GoldenGateBridge-001.jpg",
+    credit: "Science Museum — Wikimedia Commons (Public Domain)"
+  },
+  {
+    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Quantum_mechanics_harmonic_oscillator.png/640px-Quantum_mechanics_harmonic_oscillator.png",
+    credit: "Quantum Oscillator — Wikimedia Commons (CC BY-SA)"
+  },
+  {
+    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Double_slit_x-ray_simulation_monochromatic_blue-white.png/640px-Double_slit_x-ray_simulation_monochromatic_blue-white.png",
+    credit: "Double Slit Experiment — Wikimedia Commons (Public Domain)"
+  },
+  {
+    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Simple_Harmonic_Motion_Orbit.gif/300px-Simple_Harmonic_Motion_Orbit.gif",
+    credit: "Harmonic Motion — Wikimedia Commons (CC BY-SA)"
+  },
+  {
+    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Hydrogen_Density_Plots.png/640px-Hydrogen_Density_Plots.png",
+    credit: "Hydrogen Orbitals — Wikimedia Commons (Public Domain)"
+  },
+  {
+    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Feynmann_Diagram_Gluon_Radiation.svg/640px-Feynmann_Diagram_Gluon_Radiation.svg.png",
+    credit: "Feynman Diagram — Wikimedia Commons (Public Domain)"
+  },
+  {
+    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/HST-SM4.jpeg/800px-HST-SM4.jpeg",
+    credit: "Hubble Space Telescope — NASA/ESA (Public Domain)"
+  }
+];
+
+// Banner art options per season
+const seasonBannerArt = {
+  1: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Milky_Way_Arch.jpg/1280px-Milky_Way_Arch.jpg",
+  2: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Hydrogen_Density_Plots.png/800px-Hydrogen_Density_Plots.png",
+  3: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/HST-SM4.jpeg/800px-HST-SM4.jpeg",
+  4: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Double_slit_x-ray_simulation_monochromatic_blue-white.png/800px-Double_slit_x-ray_simulation_monochromatic_blue-white.png",
+  5: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Milky_Way_Arch.jpg/1280px-Milky_Way_Arch.jpg",
+  default: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Milky_Way_Arch.jpg/1280px-Milky_Way_Arch.jpg"
+};
+
+// Generic data for seasons 4-12 (representative episodes)
+const genericEpisodes = {
+  4: ["The Robotic Manipulation","The Cruciferous Vegetable Amplification","The Zazzy Substitution","The Hot Troll Deviation","The Desperation Emanation","The Irish Pub Formulation","The Apology Insufficiency","The 21-Second Excitation","The Boyfriend Complexity","The Alien Parasite Hypothesis","The Justice League Recombination","The Bus Pants Utilization","The Love Car Displacement","The Thespian Catalyst","The Benefactor Factor","The Cohabitation Formulation","The Toast Derivation","The Prestidigitation Approximation","The Zarnecki Incursion","The Herb Garden Germination","The Agreement Dissection","The Wildebeest Implementation","The Engagement Reaction","The Roommate Transmogrification"],
+  5: ["The Skank Reflex Analysis","The Infestation Hypothesis","The Pulled Groin Extrapolation","The Wiggly Finger Catalyst","The Russian Rocket Reaction","The Rhinitis Revelation","The Good Guy Fluctuation","The Isolation Permutation","The Ornithophobia Diffusion","The Flaming Spittoon Acquisition","The Speckerman Recurrence","The Shiny Trinket Maneuver","The Recombination Hypothesis","The Beta Test Initiation","The Friendship Contraction","The Vacation Solution","The Rothman Disintegration","The Werewolf Transformation","The Weekend Vortex","The Transporter Malfunction","The Hawking Excitation","The Stag Convergence","The Launch Acceleration","The Countdown Reflection"],
+  6: ["The Date Night Variable","The Decoupling Fluctuation","The Higgs Boson Observation","The Re-Entry Minimization","The Holographic Excitation","The Extract Obliteration","The Habitation Configuration","The 43 Peculiarity","The Parking Spot Escalation","The Fish Guts Displacement","The Santa Simulation","The Egg Salad Equivalency","The Bakersfield Expedition","The Cooper/Kripke Inversion","The Spoiler Alert Segmentation","The Tangible Affection Proof","The Monster Isolation","The Contractual Obligation Implementation","The Closet Reconfiguration","The Tenure Turbulence","The Closure Alternative","The Proton Resurgence","The Love Spell Potential","The Bon Voyage Reaction"],
+  7: ["The Hofstadter Insufficiency","The Deception Verification","The Scavenger Vortex","The Raiders Minimization","The Workplace Proximity","The Romance Resonance","The Proton Displacement","The Itchy Brain Simulation","The Thanksgiving Decoupling","The Discovery Dissipation","The Cooper Extraction","The Hesitation Ramification","The Occupation Recalibration","The Convention Conundrum","The Locomotive Manipulation","The Table Polarization","The Friendship Turbulence","The Mommy Observation","The Indecision Amalgamation","The Relationship Diremption","The Anything Can Happen Recurrence","The Proton Transmogrification","The Gorilla Dissolution","The Status Quo Combustion"],
+  8: ["The Locomotion Interruption","The Junior Professor Solution","The First Pitch Insufficiency","The Hook-Up Reverberation","The Focus Attenuation","The Expedition Approximation","The Misinterpretation Agitation","The Prom Equivalency","The Septum Deviation","The Champagne Reflection","The Clean Room Infiltration","The Space Probe Disintegration","The Anxiety Optimization","The Troll Manifestation","The Comic Book Store Regeneration","The Intimacy Acceleration","The Colonization Application","The Leftover Thermalization","The Skywalker Incursion","The Fortification Implementation","The Communication Deterioration","The Graduation Transmission","The Maternal Combustion","The Commitment Determination"],
+  9: ["The Matrimonial Momentum","The Separation Oscillation","The Bachelor Party Corrosion","The 2003 Approximation","The Perspiration Implementation","The Helium Insufficiency","The Spock Resonance","The Mystery Date Observation","The Platonic Permutation","The Earworm Reverberation","The Opening Night Excitation","The Sales Call Sublimation","The Empathy Optimization","The Meemaw Materialization","The Valentino Submergence","The Positive Negative Reaction","The Celebration Experimentation","The Application Deterioration","The Solder Excursion Diversion","The Big Bear Precipitation","The Viewing Party Combustion","The Fermentation Bifurcation","The Line Substitution Solution","The Convergence Convergence","The Conjugal Conjecture"],
+  10: ["The Conjugal Conjecture","The Military Miniaturization","The Dependence Transcendence","The Cohabitation Experimentation","The Hot Tub Contamination","The Fetal Kick Catalyst","The Veracity Elasticity","The Brain Bowl Incubation","The Geology Elevation","The Property Division Collision","The Birthday Synchronicity","The Holiday Summation","The Romance Recalibration","The Emotion Detection Automation","The Locomotion Reverberation","The Allowance Evaporation","The Comic-Con Conundrum","The Escape Hatch Identification","The Collaboration Fluctuation","The Recollection Dissipation","The Separation Agitation","The Cognition Regeneration","The Gyroscopic Collapse","The Long Distance Dissonance"],
+  11: ["The Proposal Proposal","The Retraction Reaction","The Relaxation Integration","The Explosion Implosion","The Collaboration Contamination","The Proton Regeneration","The Geology Methodology","The Tesla Recoil","The Citation Negation","The Confidence Erosion","The Celebration Reverberation","The Matrimonial Metric","The Solo Oscillation","The Neonatal Nomenclature","The Novelization Correlation","The Paintball Scattering","The Athenaeum Allocation","The Gates Excitation","The Tenant Disassociation","The Decision Reverberation","The Comet Polarization","The Monetary Insufficiency","The Sibling Realignment","The Bow Tie Asymmetry"],
+  12: ["The Conjugal Configuration","The Wedding Gift Wormhole","The Procreation Calculation","The Tam Turbulence","The Planetarium Collision","The Consummation Deviation","The Grant Allocation Derivation","The Consummation Deficiency","The Citation Negation","The VCR Illumination","The Paintball Scattering","The Propagation Proposition","The Confirmation Polarization","The Meteorite Manifestation","The Donation Oscillation","The D & D Vortex","The Conference Valuation","The Laureate Accumulation","The Inspiration Deprivation","The Decision Reverberation","The Plagiarism Schism","The Maternal Conclusion","The Change Constant","The Stockholm Syndrome"]
+};
+
+const genericData = {
+  vanity: [
+    "I have been told that this vanity card is too long. I disagree. But I also don't control the font size. This is the nature of collaboration — someone else controls the font size.",
+    "Sometimes the universe sends you a sign. Sometimes it sends you a bill. I have learned to appreciate the signs and dispute the bills.",
+    "It has come to my attention that some people read these cards seriously. Others photograph them. A few have memorized them. I am both touched and concerned.",
+    "I once tried to write a simple vanity card. Four hours and seventeen drafts later, I had written this. Simplicity is not my native language.",
+    "The purpose of this card is unknown. The origin of the card is known. The future of the card is uncertain. This applies to most things. This is fine.",
+    "There is a theory that says if you watch enough television, you become the television. I reject this theory. Mostly because I don't have a remote control.",
+    "Thank you for pausing. Most people do not pause. The ones who do — the pausers — they're the interesting ones.",
+    "My therapist says I use humor to avoid dealing with difficult emotions. I laughed. Then I cried. Then I wrote a vanity card about it.",
+    "I write these cards for the same reason I write anything — because silence feels too final and words feel like keeping the lights on.",
+    "What you are reading right now is a kind of miracle. Not a large miracle. A very small one. The kind that happens at the end of television shows. Still. A miracle.",
+  ],
+  trivia: [
+    "Chuck Lorre's vanity cards are typically displayed for just 1-2 seconds at the end of each episode — barely long enough to read the first line.",
+    "The show filmed at Warner Bros. Studios in Burbank, CA on Stage 25 — one of the most iconic soundstages in Hollywood history.",
+    "Jim Parsons has a master's degree in Acting from the University of Houston. Sheldon's Texas background was inspired in part by Parsons's own roots.",
+    "The show's theme song was performed by the Barenaked Ladies in a single afternoon recording session — recorded largely in one take.",
+    "TBBT holds the record for most Emmy nominations for a multi-camera sitcom — a testament to the ensemble's collective performance consistency.",
+    "Johnny Galecki and Kaley Cuoco dated in real life from 2007 to 2009 — during the early seasons — keeping it secret from the cast for about a year.",
+    "Howard's engineering vs. PhD dynamic was inspired by real tensions that exist in academic physics departments between theoretical and applied science.",
+    "The show's science consultant David Saltzberg is a particle physics professor at UCLA who reviewed every script for scientific accuracy.",
+    "Bernadette's high-pitched voice was inspired by actress Melissa Rauch's memory of a relative — it became one of the show's most distinctive audio signatures.",
+    "Sheldon's 'Bazinga!' catchphrase was not planned — it emerged organically from a single episode and became so beloved it was kept and developed.",
+  ],
+  funfact: [
+    "Soft Kitty is a real nursery rhyme called 'Warm Kitty,' traced back to a 1937 songbook — the show licensed it after discovering it was still under copyright.",
+    "The whiteboard equations visible in the apartment are always real, peer-reviewed physics — the show's consulting physicist changes them every season.",
+    "LEGO released an official Big Bang Theory set in 2015 — one of the most requested LEGO Ideas submissions ever received by the company.",
+    "The apartment number 4A changed subtly between seasons — eagle-eyed fans caught the inconsistency, which was eventually acknowledged by the production team.",
+    "Mayim Bialik (Amy) holds a real PhD in neuroscience from UCLA — her character's expertise in neurobiology was no coincidence.",
+    "The show's laugh track is live studio audience laughter — not canned — recorded in front of 200+ audience members at each taping.",
+    "Chuck Lorre has written thousands of vanity cards across all his shows. He's published a collection and maintains a website archive of every card.",
+    "The Cheesecake Factory scenes were often filmed in a single marathon session — the cast would do 30+ takes per scene to get the ambient crowd noise right.",
+    "The show's pilot was substantially rewritten after the original version tested poorly with focus groups — only Sheldon and Leonard survived the retool.",
+    "Sheldon's spot on the couch was designated with a physical mark on the set — visitors and guests were not permitted to sit there, even off-camera.",
+  ]
+};
+
+// ─── UI FUNCTIONS ────────────────────────────────────────────────────────────
+
+function onSeasonChange() {
+  const season = parseInt(document.getElementById('seasonSelect').value);
+  const epSelect = document.getElementById('episodeSelect');
+  epSelect.innerHTML = '<option value="">— Select Episode —</option>';
+  
+  document.getElementById('contentArea').innerHTML = `
+    <div class="placeholder">
+      <span class="placeholder-icon">🌌</span>
+      <h2>Now Select an Episode</h2>
+      <p>Season ${season || '?'} selected</p>
+    </div>`;
+
+  if (!season) return;
+
+  // Update banner
+  const bannerImg = document.getElementById('bannerImg');
+  bannerImg.src = seasonBannerArt[season] || seasonBannerArt.default;
+
+  const eps = episodes[season];
+  if (eps) {
+    eps.forEach(e => {
+      const opt = document.createElement('option');
+      opt.value = e.ep;
+      opt.textContent = `${e.ep}. ${e.title}`;
+      epSelect.appendChild(opt);
+    });
+  } else {
+    const epList = genericEpisodes[season] || [];
+    epList.forEach((title, i) => {
+      const opt = document.createElement('option');
+      opt.value = i + 1;
+      opt.textContent = `${i + 1}. ${title}`;
+      epSelect.appendChild(opt);
+    });
+  }
+}
+
+function getRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function onEpisodeChange() {
+  const season = parseInt(document.getElementById('seasonSelect').value);
+  const epNum = parseInt(document.getElementById('episodeSelect').value);
+  if (!season || !epNum) return;
+
+  const seasonEps = episodes[season];
+  let data;
+
+  if (seasonEps) {
+    data = seasonEps.find(e => e.ep === epNum);
+  }
+
+  if (!data) {
+    // Generic data for seasons without full entries
+    const epList = genericEpisodes[season] || [];
+    const title = epList[epNum - 1] || `Episode ${epNum}`;
+    data = {
+      ep: epNum,
+      title: title,
+      vanity: getRandom(genericData.vanity),
+      trivia: getRandom(genericData.trivia),
+      funfact: getRandom(genericData.funfact)
+    };
+  }
+
+  const art = getRandom(fanArtImages);
+
+  const content = document.getElementById('contentArea');
+  content.innerHTML = `
+    <div class="ep-header" id="epHeader">
+      <div>
+        <div class="ep-title">${data.title}</div>
+      </div>
+      <span class="ep-badge">S${String(season).padStart(2,'0')} · E${String(epNum).padStart(2,'0')}</span>
+    </div>
+
+    <div class="cards-grid">
+      <div class="info-card card-vanity" id="card1" style="transition-delay:0.05s">
+        <span class="card-icon">📜</span>
+        <div class="card-label">Chuck Lorre Vanity Card</div>
+        <div class="vanity-text">${data.vanity}</div>
+      </div>
+
+      <div class="info-card card-art" id="card2" style="transition-delay:0.1s">
+        <span class="card-icon">🎨</span>
+        <div class="card-label">Episode Fan Art</div>
+        <img class="art-image" src="${art.url}" alt="Fan Art" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Milky_Way_Arch.jpg/640px-Milky_Way_Arch.jpg'">
+        <div class="art-credit">${art.credit}</div>
+      </div>
+
+      <div class="info-card card-trivia card-full" id="card3" style="transition-delay:0.15s">
+        <span class="card-icon">🧪</span>
+        <div class="card-label">Episode Trivia</div>
+        <div class="card-content">${data.trivia}</div>
+      </div>
+
+      <div class="info-card card-funfact card-full" id="card4" style="transition-delay:0.2s">
+        <span class="card-icon">⚡</span>
+        <div class="card-label">Fun Fact</div>
+        <div class="card-content">${data.funfact}</div>
+      </div>
+    </div>
+  `;
+
+  // Trigger animations
+  requestAnimationFrame(() => {
+    document.getElementById('epHeader').classList.add('visible');
+    setTimeout(() => document.getElementById('card1')?.classList.add('visible'), 80);
+    setTimeout(() => document.getElementById('card2')?.classList.add('visible'), 130);
+    setTimeout(() => document.getElementById('card3')?.classList.add('visible'), 180);
+    setTimeout(() => document.getElementById('card4')?.classList.add('visible'), 230);
+  });
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
