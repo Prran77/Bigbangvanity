@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Big Bang Theory — Vanity Cards & Trivia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="stars"></div>
+
+  <header>
+    <div class="atom">⚛️</div>
+    <h1>THE BIG BANG THEORY</h1>
+    <p class="subtitle">✦ Vanity Cards · Trivia · Fan Archive ✦</p>
+  </header>
+
+  <main>
+
+    <!-- Season Banner -->
+    <div class="banner">
+      <img id="banner-img"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Milky_Way_Arch.jpg/1280px-Milky_Way_Arch.jpg"
+        alt="Cosmos fan art">
+      <div class="banner-overlay"></div>
+      <div class="banner-text">
+        <div id="banner-title" class="banner-title">The Big Bang Theory Fan Archive</div>
+        <div class="banner-sub">All 12 seasons · vanity cards · trivia · fun facts</div>
+      </div>
+    </div>
+
+    <!-- Episode Selector -->
+    <section class="selector-card">
+      <div class="selector-grid">
+        <div class="field">
+          <label for="season-select">◈ Season</label>
+          <select id="season-select">
+            <option value="">— Select Season —</option>
+            <option value="1">Season 1 (2007–08)</option>
+            <option value="2">Season 2 (2008–09)</option>
+            <option value="3">Season 3 (2009–10)</option>
+            <option value="4">Season 4 (2010–11)</option>
+            <option value="5">Season 5 (2011–12)</option>
+            <option value="6">Season 6 (2012–13)</option>
+            <option value="7">Season 7 (2013–14)</option>
+            <option value="8">Season 8 (2014–15)</option>
+            <option value="9">Season 9 (2015–16)</option>
+            <option value="10">Season 10 (2016–17)</option>
+            <option value="11">Season 11 (2017–18)</option>
+            <option value="12">Season 12 (2018–19)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="episode-select">◈ Episode</label>
+          <select id="episode-select" disabled>
+            <option value="">— Select Episode —</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Output -->
+    <section id="content">
+      <div class="placeholder">
+        <span class="float-icon">🔭</span>
+        <h2>Pick a Season &amp; Episode</h2>
+        <p>Vanity cards, trivia &amp; fun facts await</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>★ The Big Bang Theory © Chuck Lorre / Warner Bros. Television — Unofficial fan tribute ★</p>
+    <p>Vanity card text inspired by Chuck Lorre's style · Fan art: public domain &amp; CC-licensed images</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
